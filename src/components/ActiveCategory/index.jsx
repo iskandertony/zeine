@@ -1,6 +1,7 @@
 import {Button, InputNumber, Select} from "antd";
 import React, {useEffect, useState} from "react";
 import AddBlockForm from "../AddBlockForm";
+import {BLOCKS} from "../../constants";
 
 const ActiveCategory = ({active, handleAdd}) => {
     const [block, setBlock] = useState()
@@ -13,9 +14,10 @@ const ActiveCategory = ({active, handleAdd}) => {
         setBlock(value)
     }
 
-
-    const options = active.list.map(it => ({value: it.name, label: it.label, object: it}))
-    const activeBlock = active.list.find(it => it.name === block)
+    const options = active.types.map(it => ({value: it.value, label: it.label, object: it}))
+    const activeBlock = active.types.find(it => it.value === block)
+    console.log("block", block)
+    console.log("activeBlock", activeBlock)
     return (
         <div>
             <h2>{active.label}</h2>
@@ -27,7 +29,7 @@ const ActiveCategory = ({active, handleAdd}) => {
                 options={options}
             />
             <div>
-                {activeBlock && <AddBlockForm item={activeBlock} onAdd={handleAdd}/>}
+                {activeBlock && <AddBlockForm item={active} onAdd={handleAdd}/>}
             </div>
         </div>
     )

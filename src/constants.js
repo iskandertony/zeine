@@ -1,72 +1,219 @@
+const MATERIALS = [
+
+]
+
+// export const BLOCKS = [
+//     {
+//         name: '1_door',
+//         label: '1 дверь',
+//         types: [
+//             {label: 'Центр', value: 'center'},
+//             {label: 'Край', value: 'side'}
+//         ],
+//         widths: [450, 500, 600],
+//         materials: MATERIALS,
+//         heights: [],
+//         category: 'bottom',
+//         category_name: 'Нижние Блоки'
+//     },
+// ]
 export const BLOCKS = [
     {
+        name: '1_door',
+        label: '1 дверь',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'}
+        ],
+        widths: [450, 500, 600],
+        materials: MATERIALS,
+        heights: [],
         category: 'bottom',
-        label: 'Нижние Блоки',
-        list: [
-            {
-                name: '1_door_center',
-                label: '1 дверь центр',
-                widths: [450, 500, 600],
-                heights: [],
-                category: 'bottom',
-            },
-            {
-                name: '1_door_extreme',
-                label: '1 дверь край',
-                widths: [450, 500, 600],
-                heights: [],
-                category: 'bottom',
-            }
-        ]
+        category_name: 'Нижние Блоки'
     },
     {
+        name: '2_doors',
+        label: '2 двери',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'}
+        ],
+        widths: [700, 800, 900, 1000, 1100],
+        materials: MATERIALS,
+        heights: [],
+        category: 'bottom',
+        category_name: 'Нижние Блоки'
+    },
+    {
+        name: '2_boxes',
+        label: '2 ящика',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'}
+        ],
+        widths: [500, 600, 700, 800, 900],
+        materials: MATERIALS,
+        heights: [],
+        category: 'bottom',
+        category_name: 'Нижние Блоки'
+    },
+    {
+        name: '3_boxes',
+        label: '3 ящика',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'}
+        ],
+        widths: [500, 600, 700, 800, 900],
+        materials: MATERIALS,
+        heights: [],
+        category: 'bottom',
+        category_name: 'Нижние Блоки'
+    },
+
+    {
+        name: '1_door',
+        label: '1 дверь',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'}
+        ],
+        widths: [450, 500, 600],
+        materials: MATERIALS,
+        heights: [],
         category: 'top',
-        label: 'Верхние Блоки',
-        list: [
-            {
-                name: '1_door_center',
-                label: '1 дверь центр',
-                widths: [400, 500, 600],
-                heights: [],
-                category: 'top',
-            },
-            {
-                name: '1_door_extreme',
-                label: '1 дверь край',
-                widths: [400, 500, 600],
-                heights: [],
-                category: 'top',
-            }
-        ]
+        category_name: 'Верхние Блоки'
     },
     {
+        name: '2_doors',
+        label: '2 двери',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'}
+        ],
+        widths: [700, 800, 900],
+        materials: MATERIALS,
+        heights: [],
+        category: 'top',
+        category_name: 'Верхние Блоки'
+    },
+
+    {
+        name: '2_doors',
+        label: '2 двери',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'},
+            {label: 'Отдельный', value: 'individual'}
+
+        ],
+        widths: [400, 500, 600],
+        materials: MATERIALS,
+        heights: [],
         category: 'penal',
-        label: 'Пенал',
-        list: [
-            {
-                name: '2_doors_center',
-                label: '2 двери, одна над другой. ЦЕНТР',
-                widths: [400, 500, 600],
-                heights: [],
-                category: 'penal',
-            },
-            {
-                name: '2_doors_extreme',
-                label: '2 двери, одна над другой. КРАЙ',
-                widths: [400, 500, 600],
-                heights: [],
-                category: 'penal',
-            },
-            {
-                name: '2_doors_separate',
-                label: '2 двери, одна над другой. ОТДЕЛЬНЫЙ',
-                widths: [400, 500, 600],
-                heights: [],
-                category: 'penal',
-            }
-        ]
-    }
+        category_name: 'Пенал'
+    },
+
+    {
+        name: 'oven',
+        label: 'Дух и МП',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'},
+            {label: 'Отдельный', value: 'individual'}
+
+        ],
+        widths: [600],
+        materials: MATERIALS,
+        heights: [],
+        category: 'penal',
+        category_name: 'Пенал'
+    },
+    {
+        name: 'fridge',
+        label: 'холодильник',
+        types: [
+            {label: 'Центр', value: 'center'},
+            {label: 'Край', value: 'side'},
+            {label: 'Отдельный', value: 'individual'}
+
+        ],
+        widths: [670, 770, 970],
+        materials: MATERIALS,
+        heights: [],
+        category: 'penal',
+        category_name: 'Пенал'
+    },
 ]
+// export const BLOCKS = [
+//     {
+//         category: 'bottom',
+//         label: 'Нижние Блоки',
+//         list: [
+//             {
+//                 name: '1_door_center',
+//                 label: '1 дверь центр',
+//                 widths: [450, 500, 600],
+//                 heights: [],
+//                 category: 'bottom',
+//             },
+//             {
+//                 name: '1_door_extreme',
+//                 label: '1 дверь край',
+//                 widths: [450, 500, 600],
+//                 heights: [],
+//                 category: 'bottom',
+//             }
+//         ]
+//     },
+//     {
+//         category: 'top',
+//         label: 'Верхние Блоки',
+//         list: [
+//             {
+//                 name: '1_door_center',
+//                 label: '1 дверь центр',
+//                 widths: [400, 500, 600],
+//                 heights: [],
+//                 category: 'top',
+//             },
+//             {
+//                 name: '1_door_extreme',
+//                 label: '1 дверь край',
+//                 widths: [400, 500, 600],
+//                 heights: [],
+//                 category: 'top',
+//             }
+//         ]
+//     },
+//     {
+//         category: 'penal',
+//         label: 'Пенал',
+//         list: [
+//             {
+//                 name: '2_doors_center',
+//                 label: '2 двери, одна над другой. ЦЕНТР',
+//                 widths: [400, 500, 600],
+//                 heights: [],
+//                 category: 'penal',
+//             },
+//             {
+//                 name: '2_doors_extreme',
+//                 label: '2 двери, одна над другой. КРАЙ',
+//                 widths: [400, 500, 600],
+//                 heights: [],
+//                 category: 'penal',
+//             },
+//             {
+//                 name: '2_doors_separate',
+//                 label: '2 двери, одна над другой. ОТДЕЛЬНЫЙ',
+//                 widths: [400, 500, 600],
+//                 heights: [],
+//                 category: 'penal',
+//             }
+//         ]
+//     }
+// ]
 
 export const PRICES = {
     korpus: 3500,

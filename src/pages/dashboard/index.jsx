@@ -30,8 +30,8 @@ const DashBoard = () => {
             <div>
                 {BLOCKS.map(item => (
                     <Space key={item.category} wrap style={{padding: 8}}>
-                        <Card title={item.label} onClick={() => handleCategoryClick(item)} style={{ width: 300, cursor:"pointer" }}>
-                            <p>{item.label}</p>
+                        <Card title={`${item.label}`} onClick={() => handleCategoryClick(item)} style={{ width: 300, cursor:"pointer" }}>
+                            <p>{item.category_name}</p>
                         </Card>
                     </Space>
                 ))}
