@@ -1,0 +1,32 @@
+.dash_board {
+  display: flex;
+  justify-content: space-between;
+
+  .content {
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 90vh;
+  }
+  .ant-card-head {
+    color: white;
+  }
+  .category-navy-blue .ant-card-head {
+    background-color: #ef6565;
+  }
+
+  .category-coral .ant-card-head {
+    background-color: #9DC183;
+  }
+
+  .category-mint .ant-card-head {
+    background-color: #D3A297;
+  }
+
+  .category-lavender .ant-card-head {
+    background-color: #87CEEB;
+  }
+
+
+}

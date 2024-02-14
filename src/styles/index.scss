@@ -1,0 +1,337 @@
+//@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*:focus,
+*:focus-visible {
+  outline: none !important;
+}
+html {
+  font-size: 20px;
+}
+
+p,
+li,
+a,
+b,
+input,
+textarea {
+  color: var(--palette-secondary-700);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+button {
+  font-size: 0.7rem;
+  font-weight: 600;
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
+}
+
+b {
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Comfortaa", sans-serif;
+  user-select: none;
+}
+a,
+span {
+  user-select: none;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.6rem;
+  color: var(--color-secondary-200);
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+}
+h3 {
+  font-size: 1.2rem;
+}
+h4 {
+  font-size: 0.9rem;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background: rgba(124, 70, 196, 0.44) !important;
+  border-radius: 50% !important;
+  outline: none;
+}
+
+.react-datepicker__day--selected {
+  background: #7c46c4 !important;
+  outline: none;
+}
+
+.react-datepicker__day {
+  border-radius: 50% !important;
+}
+
+.react-datepicker__header {
+  background: rgba(124, 70, 196, 0.11) !important;
+}
+
+.nav {
+  text-decoration: none;
+}
+
+//.container {
+//  max-width: 1440px;
+//  margin-left: auto;
+//  margin-right: auto;
+//  padding: 50px 160px;
+//}
+
+.container_landing {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 60px;
+  width: 100%;
+  @media (max-width: 1280px) {
+    padding: 50px 40px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 50px 16px;
+  }
+
+  @media (max-width: 430px) {
+    padding: 20px 16px;
+  }
+}
+
+.container {
+  width: 100%;
+  //max-width: 1216px;
+  max-width: 430px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  //padding-right: 60px;
+  //padding-left: 60px;
+  //@media (max-width: 1024px) {
+  //  margin-left: auto;
+  //  margin-right: auto;
+  //  padding: 10px 40px;
+  //}
+  @media (max-width: 768px) {
+    max-width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.container_mobile {
+  //max-width: 1440px;
+  max-width: 430px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  //padding-right: 60px;
+  //padding-left: 60px;
+  //@media (max-width: 1024px) {
+  //  margin-left: auto;
+  //  margin-right: auto;
+  //  padding: 10px 40px;
+  //}
+  @media (max-width: 768px) {
+    max-width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+}
+
+.main_page {
+  padding-bottom: 110px !important;
+}
+
+.back_ground {
+  width: 100%;
+  padding-top: 40px;
+  background-color: var(--color-secondary-700);
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 20px;
+  @media (max-width: 768px) {
+    padding-top: 16px;
+  }
+}
+
+.back_ground.secondary {
+  padding-bottom: 60px;
+}
+
+.back_ground_white {
+  padding-top: 40px;
+  background-color: var(--color-secondary-white);
+  //height: 100%;
+  //min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14.3087px;
+  line-height: 145%;
+  color: var(--color-secondary-black);
+}
+
+.name {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 145%;
+  color: var(--color-secondary-black);
+}
+
+.text {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.2081px;
+  line-height: 145%;
+  color: var(--color-secondary-black);
+}
+
+.card {
+  border-radius: 8px;
+  background-color: transparent;
+  padding: 17px 15px;
+  border: 1px solid var(--color-secondary-500);
+}
+
+.right_conor {
+  position: absolute;
+  right: 10px;
+}
+
+.button_color {
+  background-color: var(--color-alternative-green) !important;
+}
+
+.button_done {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-change-100);
+  color: var(--color-secondary-white);
+  width: 100%;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-change-100);
+  color: var(--color-secondary-white);
+  width: 100%;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background: var(--color-primary-600) !important;
+}
+
+.button_exit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-white);
+  color: var(--color-secondary-red);
+  width: 100%;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+.dropdown_text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-alternative-1400);
+}
+
+.dropdown_text_red {
+  color: var(--color-alternative-1500) !important;
+}
+
+.web {
+  width: 17%;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.width-u {
+  width: unset!important;
+}
+
+.web_content {
+  width: 83%;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+}
+
+

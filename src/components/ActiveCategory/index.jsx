@@ -1,38 +1,42 @@
-import {Button, InputNumber, Select} from "antd";
-import React, {useEffect, useState} from "react";
+import { Button, InputNumber, Select } from "antd";
+import React, { useEffect, useState } from "react";
 import AddBlockForm from "../AddBlockForm";
-import {BLOCKS} from "../../constants";
+import "./style.scss";
 
-const ActiveCategory = ({active, handleAdd}) => {
-    const [block, setBlock] = useState()
+const ActiveCategory = ({ active, handleAdd }) => {
+  const [block, setBlock] = useState();
 
-    useEffect(() => {
-        setBlock(undefined)
-    },[active])
+  useEffect(() => {
+    setBlock(undefined);
+  }, [active]);
 
-    const handleBlockChange = (value) => {
-        setBlock(value)
-    }
+  const handleBlockChange = (value) => {
+    setBlock(value);
+  };
 
-    const options = active.types.map(it => ({value: it.value, label: it.label, object: it}))
-    const activeBlock = active.types.find(it => it.value === block)
-    console.log("block", block)
-    console.log("activeBlock", activeBlock)
-    return (
-        <div>
-            <h2>{active.label}</h2>
-            <Select
-                value={block}
-                placeholder={'Выберете Блок'}
-                style={{ width: 300 }}
-                onChange={handleBlockChange}
-                options={options}
-            />
-            <div>
-                {activeBlock && <AddBlockForm item={active} onAdd={handleAdd}/>}
-            </div>
-        </div>
-    )
-}
+  const options = active.types.map((it) => ({
+    value: it.value,
+    label: it.label,
+    object: it,
+  }));
+  // const activeBlock = active.types.find((it) => it.value === block);
+  return (
+    <div className="active_category">
+      <h2>
+        {active.category_name} {active.label}
+      </h2>
+      <Select
+        value={block}
+        placeholder={"Выберете Тип"}
+        style={{ width: "100%" }}
+        onChange={handleBlockChange}
+        options={options}
+      />
+      <div>
+        <AddBlockForm item={active} onAdd={handleAdd} />
+      </div>
+    </div>
+  );
+};
 
-export default ActiveCategory
+export default ActiveCategory;

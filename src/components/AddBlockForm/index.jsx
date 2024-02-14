@@ -1,70 +1,99 @@
-import {Button, InputNumber, Select} from "antd";
-import React, {useState} from "react";
-import {CALCULATION} from "../../constants";
+import { Button, InputNumber, Select } from "antd";
+import React, { useState } from "react";
+import { CALCULATION } from "../../constants";
+import "./style.scss";
 
-const AddBlockForm = ({item, onAdd}) => {
-    const [width, setWidth] = useState()
-    const [count, setCount] = useState(1)
+const AddBlockForm = ({ item, onAdd }) => {
+  const [width, setWidth] = useState();
+  const [count, setCount] = useState(1);
+  const [facade, setFacade] = useState();
+  const [materials, setMaterials] = useState();
+  const handleBlockChange = (value) => {
+    setWidth(value);
+  };
+  const handleMaterial = (value) => {
+    setMaterials(value);
+  };
 
+  const handleFacade = (value) => {
+    setFacade(value);
+  };
+  const handleCountChange = (value) => {
+    setCount(value);
+  };
 
-    const handleBlockChange = (value) => {
-        setWidth(value)
-    }
+  const clearForm = () => {
+    setCount(undefined);
+    setWidth(undefined);
+  };
 
-    const handleCountChange = (value) => {
-        setCount(value)
-    }
+  const subTotal = (name, width, count) => {
+    const key = `${name}-${width}`;
+    const prices = CALCULATION[key];
 
-    const clearForm = () => {
-        setCount(undefined)
-        setWidth(undefined)
-    }
+    let sum = 0;
+    Object.values(prices).forEach((value) => {
+      sum += value;
+    });
 
-    const subTotal = (name, width, count) => {
-        const key = `${name}-${width}`
-        const prices = CALCULATION[key]
+    return sum * count;
+  };
 
-        let sum = 0
-        Object.values(prices).forEach(value => {
-            sum += value
-        })
+  const handleAdd = () => {
+    const quantity = count ?? 1;
 
-        return sum * count
-    }
+    const resultItem = {
+      width,
+      count: quantity,
+      block: item,
+      materials: materials,
+      facade: facade,
+      subTotal: subTotal(item.name, width, quantity),
+    };
 
+    onAdd(resultItem);
+    clearForm();
+  };
 
-    const handleAdd = () => {
-        const quantity = count ?? 1
+  const options = item.widths.map((it) => ({ value: it, label: it }));
+  const optionsMaterial = item.facade.map((it) => ({
+    value: it.value,
+    label: it.label,
+  }));
+  return (
+    <div key={item.name} className="add_block_form">
+      <Select
+        value={width}
+        placeholder={"Ширина"}
+        onChange={handleBlockChange}
+        options={options}
+      />
 
-        const resultItem = {
-            width,
-            count: quantity,
-            block: item,
-            subTotal: subTotal(item.name, width, quantity)
-        }
+      <Select
+        value={facade}
+        placeholder={"Фасад"}
+        onChange={handleFacade}
+        options={optionsMaterial}
+      />
 
-        onAdd(resultItem)
-        clearForm()
-    }
+      <Select
+          value={materials}
+          placeholder={"Корпус"}
+          onChange={handleMaterial}
+          options={optionsMaterial}
+      />
 
-    const options = item.widths.map(it => ({value: it, label: it}))
-    return (
-        <div key={item.name}>
-            <div>
-                <Select
-                    value={width}
-                    placeholder={'ширина'}
-                    style={{ width: 120 }}
-                    onChange={handleBlockChange}
-                    options={options}
-                />
+      <InputNumber
+        value={count}
+        addonBefore={"Количество"}
+        onChange={handleCountChange}
+      />
 
-                <InputNumber value={count} addonBefore={'количество'} onChange={handleCountChange} />
-            </div>
-            <p><Button disabled={!width} type={'primary'} onClick={handleAdd}>Добавить</Button></p>
-            <hr/>
-        </div>
-    )
-}
+      <Button disabled={!width} type={"primary"} onClick={handleAdd}>
+        Добавить
+      </Button>
+    </div>
+  );
+};
 
-export default AddBlockForm
+export default AddBlockForm;
