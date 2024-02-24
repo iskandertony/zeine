@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Button, Card, Select, Space } from "antd";
-import { BLOCKS, CALCULATION } from "../../constants";
+import { Card, Space } from "antd";
+import { BLOCKS } from "../../constants";
 import ActiveCategory from "../../components/ActiveCategory";
+import { Collapse } from 'antd';
 import "./style.scss";
 
 const DashBoard = () => {
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(BLOCKS[0]);
 
   const [result, setResult] = useState([]);
 
@@ -19,15 +20,43 @@ const DashBoard = () => {
 
   const getTotal = () => {
     let total = 0;
-    result.forEach((res) => (total += res.subTotal));
+    result.forEach((res) => (total += res.total));
 
     return total;
   };
 
+    const items = result.map(item => {
+        const subTotal = item.cost * item.count
+        const label = <div>
+            <h4>{item.block.category_name} - {item.block.label}</h4>
+            <div>Ширина <b>{item.width}</b></div>
+            <div>Итого <b>{subTotal}</b></div>
+        </div>
+        const text = <p>
+            {item.list.map(it => {
+                return (
+                    <div key={it.name}>
+                        <h5>{it.label}:</h5>
+                        <div>{it.price} x {it.kef} = {it.subTotal}</div>
+                    </div>
+                )
+            })}
+            <hr/>
+            <div>Цена за 1ед: <b>{item.cost} c</b></div>
+            <div>Количество: <b>{item.count} шт</b></div>
+            <div>Сумма: <b>{subTotal} c</b></div>
+        </p>
+        return {
+            key: item.name,
+            label: label,
+            children: text,
+        }
+    })
+
   return (
     <div className="dash_board container_landing">
       <div className="content">
-          {BLOCKS.map(item => {
+          {BLOCKS.map((item, i) => {
               let cardClass = '';
               switch (item.category_name) {
                   case 'Нижние Блоки':
@@ -46,12 +75,13 @@ const DashBoard = () => {
                       cardClass = '';
               }
               return (
-                  <Space key={item.category} wrap style={{ padding: 8 }}>
+                  <Space key={i} wrap style={{ padding: 8 }}>
                       <Card
                           className={cardClass}
                           title={item.label}
                           onClick={() => handleCategoryClick(item)}
-                          style={{ width: 300, cursor: "pointer" }}>
+                          style={{ width: 300, cursor: "pointer" }}
+                      >
                           <p>{item.category_name}</p>
                       </Card>
                   </Space>
@@ -63,26 +93,16 @@ const DashBoard = () => {
           <ActiveCategory
             active={activeCategory}
             handleAdd={handleAdd}
-          ></ActiveCategory>
+          />
         )}
       </div>
       <div>
-        <h2>Смета</h2>
+        <h2>Смета - <span style={{color: 'red'}}>{getTotal()} с</span></h2>
         <div>
-          {result.map((item) => (
-            <div>
-              <h5>
-                {item.block.category} - {item.block.label}
-              </h5>
-              <div>
-                {item.width} - {item.count}шт
-              </div>
-              <div>Сумма: {item.subTotal} сом</div>
-            </div>
-          ))}
+          <Collapse items={items} bordered={false} />
           <hr />
           <div>
-            <b> Общая сумма: {getTotal()}</b>
+            <b>Общая сумма: {getTotal()}</b>
           </div>
         </div>
       </div>

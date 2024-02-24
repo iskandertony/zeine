@@ -1,18 +1,36 @@
 import { Button, InputNumber, Select } from "antd";
-import React, { useState } from "react";
-import { CALCULATION } from "../../constants";
+import React, {useEffect, useState} from "react";
+import {CALCULATION, DIVIDER, KEF, PRICES} from "../../constants";
 import "./style.scss";
 
 const AddBlockForm = ({ item, onAdd }) => {
+  const [blockType, setBlockType] = useState();
   const [width, setWidth] = useState();
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState();
   const [facade, setFacade] = useState();
-  const [materials, setMaterials] = useState();
-  const handleBlockChange = (value) => {
+  const [corpus, setCorpus] = useState();
+  console.log('item', item)
+
+  useEffect(() => {
+    resetForm()
+  }, [item])
+
+  const resetForm = () => {
+    setCount(1);
+    setWidth(item.widths[2])
+    setFacade(item.facade[1].value)
+    setCorpus(item.corpus[0].value)
+    setBlockType(item.types[0].value);
+  };
+
+  const handleTypeChange = (value) => {
+    setBlockType(value);
+  };
+  const handleWidthChange = (value) => {
     setWidth(value);
   };
-  const handleMaterial = (value) => {
-    setMaterials(value);
+  const handleCorpus = (value) => {
+    setCorpus(value);
   };
 
   const handleFacade = (value) => {
@@ -22,65 +40,97 @@ const AddBlockForm = ({ item, onAdd }) => {
     setCount(value);
   };
 
-  const clearForm = () => {
-    setCount(undefined);
-    setWidth(undefined);
-  };
+  const getMaterialsList = (item) => {
+    const key = `${item.name}${DIVIDER}${blockType}${DIVIDER}${width}`
+    const kef = KEF[key]
+    if (!kef) {
+      console.error('Коэффициент не найдет!')
+      return
+    }
 
-  const subTotal = (name, width, count) => {
-    const key = `${name}-${width}`;
-    const prices = CALCULATION[key];
-
+    const list = []
     let sum = 0;
-    Object.values(prices).forEach((value) => {
-      sum += value;
+    Object.keys(kef).forEach((name) => {
+      const value = kef[name]
+
+      if (!value) return
+      const subTotal = PRICES[name] * value
+
+      const newItem = {
+        name,
+        label: name, // Надо сделать мэппинг
+        kef: value,
+        price: PRICES[name],
+        subTotal,
+      }
+      sum += subTotal
+      list.push(newItem)
     });
 
-    return sum * count;
+    return {list, cost: sum}
   };
 
   const handleAdd = () => {
     const quantity = count ?? 1;
-
+    const key = `${item.name}-${width}`;
+    const cost = getMaterialsList(item, width, quantity).cost
+    const list = getMaterialsList(item, width, quantity).list
+    const total = cost * quantity
+    console.log('facade', facade)
     const resultItem = {
       width,
       count: quantity,
+      corpus,
+      facade,
+      kef: KEF[key],
+      list,
+      cost,
+      total,
       block: item,
-      materials: materials,
-      facade: facade,
-      subTotal: subTotal(item.name, width, quantity),
     };
-
     onAdd(resultItem);
-    clearForm();
+    resetForm();
   };
 
-  const options = item.widths.map((it) => ({ value: it, label: it }));
-  const optionsMaterial = item.facade.map((it) => ({
+  const typeOptions = item.types.map((it) => ({
+    value: it.value,
+    label: it.label,
+    object: it,
+  }));
+
+  const optionsWidth = item.widths.map((it) => ({ value: it, label: it }));
+  const optionsCorpus = item.facade.map((it) => ({
     value: it.value,
     label: it.label,
   }));
   return (
     <div key={item.name} className="add_block_form">
       <Select
+          value={blockType}
+          placeholder={"Выберете Тип"}
+          style={{ width: "100%" }}
+          onChange={handleTypeChange}
+          options={typeOptions}
+      />
+      <Select
         value={width}
         placeholder={"Ширина"}
-        onChange={handleBlockChange}
-        options={options}
+        onChange={handleWidthChange}
+        options={optionsWidth}
       />
 
       <Select
         value={facade}
         placeholder={"Фасад"}
         onChange={handleFacade}
-        options={optionsMaterial}
+        options={optionsCorpus}
       />
 
       <Select
-          value={materials}
+          value={corpus}
           placeholder={"Корпус"}
-          onChange={handleMaterial}
-          options={optionsMaterial}
+          onChange={handleCorpus}
+          options={optionsCorpus}
       />
 
       <InputNumber

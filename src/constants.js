@@ -241,12 +241,16 @@ export const BLOCKS = [
 // ]
 
 export const PRICES = {
-  korpus: 3500,
-  egger: 5500,
-  agt: 6000,
-  emal: 4000,
-  chpu: 500,
-  shpon: 8200,
+  korpus_ldsp: 3500,
+  fasad_egger: 5500,
+  side_egger: 5500,
+  fasad_agt: 6000,
+  side_agt: 6000,
+  fasad_emal: 4000,
+  side_emal: 4000,
+  fasad_shpon: 8200,
+  side_shpon: 8200,
+  fasad_chpu: 500,
   kromka_korpus: 52,
   kromka_fasad: 106,
   hdf: 1200,
@@ -261,6 +265,67 @@ export const PRICES = {
 
 export const multiply = (a, b) => {
   return a * b;
+};
+
+export const DIVIDER = '__'
+export const KEF = {
+  "1_door__center__450": {
+    korpus_ldsp: 0.31,
+    fasad_egger: 0.09,
+    fasad_agt: 0.12,
+    fasad_emal: 0.45,
+    fasad_chpu: 0.45,
+    fasad_shpon: 0.45,
+    side_egger: 0,
+    side_agt: 0,
+    side_emal: 0,
+    side_shpon: 0,
+    hdf: 0.08,
+    kromka_fasad: 4,
+    kromka_korpus: 10,
+    naves_blum: 2,
+    dovodchik: 2,
+    konfirmat: 16,
+    nojki: 4,
+  },
+  "1_door__center__500": {
+    korpus_ldsp: 0.33,
+    fasad_egger: 0.1,
+    fasad_agt: 0.12,
+    fasad_emal: 0.5,
+    fasad_chpu: 0.5,
+    fasad_shpon: 0.5,
+    side_egger: 0,
+    side_agt: 0,
+    side_emal: 0,
+    side_shpon: 0,
+    hdf: 0.08,
+    kromka_fasad: 4,
+    kromka_korpus: 10,
+    naves_blum: 2,
+    dovodchik: 2,
+    konfirmat: 16,
+    nojki: 4,
+  },
+  "1_door__center__600": {
+    korpus_ldsp: 0.37,
+    fasad_egger: 0.12,
+    fasad_agt: 0.12,
+    fasad_emal: 0.6,
+    fasad_chpu: 0.6,
+    fasad_shpon: 0.6,
+    side_egger: 0,
+    side_agt: 0,
+    side_emal: 0,
+    side_shpon: 0,
+    hdf: 0.08,
+    kromka_fasad: 4,
+    kromka_korpus: 10,
+    naves_blum: 2,
+    dovodchik: 2,
+    konfirmat: 16,
+    nojki: 4,
+  },
 };
 
 export const CALCULATION = {
