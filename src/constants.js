@@ -170,87 +170,20 @@ export const BLOCKS = [
     category_name: "Пенал",
   },
 ];
-// export const BLOCKS = [
-//     {
-//         category: 'bottom',
-//         label: 'Нижние Блоки',
-//         list: [
-//             {
-//                 name: '1_door_center',
-//                 label: '1 дверь центр',
-//                 widths: [450, 500, 600],
-//                 heights: [],
-//                 category: 'bottom',
-//             },
-//             {
-//                 name: '1_door_extreme',
-//                 label: '1 дверь край',
-//                 widths: [450, 500, 600],
-//                 heights: [],
-//                 category: 'bottom',
-//             }
-//         ]
-//     },
-//     {
-//         category: 'top',
-//         label: 'Верхние Блоки',
-//         list: [
-//             {
-//                 name: '1_door_center',
-//                 label: '1 дверь центр',
-//                 widths: [400, 500, 600],
-//                 heights: [],
-//                 category: 'top',
-//             },
-//             {
-//                 name: '1_door_extreme',
-//                 label: '1 дверь край',
-//                 widths: [400, 500, 600],
-//                 heights: [],
-//                 category: 'top',
-//             }
-//         ]
-//     },
-//     {
-//         category: 'penal',
-//         label: 'Пенал',
-//         list: [
-//             {
-//                 name: '2_doors_center',
-//                 label: '2 двери, одна над другой. ЦЕНТР',
-//                 widths: [400, 500, 600],
-//                 heights: [],
-//                 category: 'penal',
-//             },
-//             {
-//                 name: '2_doors_extreme',
-//                 label: '2 двери, одна над другой. КРАЙ',
-//                 widths: [400, 500, 600],
-//                 heights: [],
-//                 category: 'penal',
-//             },
-//             {
-//                 name: '2_doors_separate',
-//                 label: '2 двери, одна над другой. ОТДЕЛЬНЫЙ',
-//                 widths: [400, 500, 600],
-//                 heights: [],
-//                 category: 'penal',
-//             }
-//         ]
-//     }
-// ]
+
+export const MATERIAL_NAMES = {
+  egger: 'ЭГГЕР',
+  ldsp: 'ЛДСП',
+  hdf: 'ХДФ'
+}
 
 export const PRICES = {
-  korpus_ldsp: 3500,
-  fasad_egger: 5500,
-  side_egger: 5500,
-  fasad_agt: 6000,
-  side_agt: 6000,
-  fasad_emal: 4000,
-  side_emal: 4000,
-  fasad_shpon: 8200,
-  side_shpon: 8200,
-  fasad_chpu: 500,
+  ldsp: 3500,
+  egger: 5500,
+  agt: 6000,
+  emal: 4000,
+  shpon: 8200,
+  chpu: 500,
   kromka_korpus: 52,
   kromka_fasad: 106,
   hdf: 1200,
@@ -268,18 +201,28 @@ export const multiply = (a, b) => {
 };
 
 export const DIVIDER = '__'
+export const FACADE_KEF = {
+  "1_door__center__450": {
+    egger: 0.09,
+    agt: 0.12,
+    emal: 0.45,
+    chpu: 0.45,
+    shpon: 0.45,
+  }
+}
+
+export const SIDE_KEF = {
+  "1_door__center__450": {
+    ldsp: 0.31,
+    egger: 0.09,
+    agt: 0.12,
+    emal: 0.45,
+    chpu: 0.45,
+    shpon: 0.45,
+  }
+}
 export const KEF = {
   "1_door__center__450": {
-    korpus_ldsp: 0.31,
-    fasad_egger: 0.09,
-    fasad_agt: 0.12,
-    fasad_emal: 0.45,
-    fasad_chpu: 0.45,
-    fasad_shpon: 0.45,
-    side_egger: 0,
-    side_agt: 0,
-    side_emal: 0,
-    side_shpon: 0,
     hdf: 0.08,
     kromka_fasad: 4,
     kromka_korpus: 10,
@@ -328,20 +271,4 @@ export const KEF = {
   },
 };
 
-export const CALCULATION = {
-  "1_door_center-450": {
-    ldsp: multiply(PRICES.korpus, 0.31),
-    fasad_egger: multiply(PRICES.egger, 0.09),
-    fasad_agt: multiply(PRICES.agt, 0.12),
-    fasad_emal: multiply(PRICES.emal, 0.45),
-    fasad_chpu: multiply(PRICES.emal, 0.45),
-    fasad_shpon: multiply(PRICES.shpon, 0.45),
-    hdf: multiply(PRICES.hdf, 0.08),
-    kromka_fasad: multiply(PRICES.kromka_fasad, 4),
-    kromka_korpus: multiply(PRICES.kromka_korpus, 10),
-    naves_blum: multiply(PRICES.naves_blum, 2),
-    dovodchik: multiply(PRICES.dovodchik, 2),
-    konfirmat: multiply(PRICES.konfirmat, 16),
-    nojki: multiply(PRICES.nojki, 4),
-  },
-};
+

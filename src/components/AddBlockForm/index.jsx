@@ -1,6 +1,6 @@
 import { Button, InputNumber, Select } from "antd";
 import React, {useEffect, useState} from "react";
-import {CALCULATION, DIVIDER, KEF, PRICES} from "../../constants";
+import {CALCULATION, DIVIDER, KEF, MATERIAL_NAMES, PRICES} from "../../constants";
 import "./style.scss";
 
 const AddBlockForm = ({ item, onAdd }) => {
@@ -17,7 +17,7 @@ const AddBlockForm = ({ item, onAdd }) => {
 
   const resetForm = () => {
     setCount(1);
-    setWidth(item.widths[2])
+    setWidth(item.widths[0])
     setFacade(item.facade[1].value)
     setCorpus(item.corpus[0].value)
     setBlockType(item.types[0].value);
@@ -58,7 +58,7 @@ const AddBlockForm = ({ item, onAdd }) => {
 
       const newItem = {
         name,
-        label: name, // Надо сделать мэппинг
+        label: MATERIAL_NAMES[name], // Надо сделать мэппинг
         kef: value,
         price: PRICES[name],
         subTotal,
@@ -72,12 +72,13 @@ const AddBlockForm = ({ item, onAdd }) => {
 
   const handleAdd = () => {
     const quantity = count ?? 1;
-    const key = `${item.name}-${width}`;
+    const key = `${item.name}${DIVIDER}${blockType}${DIVIDER}${width}`
     const cost = getMaterialsList(item, width, quantity).cost
     const list = getMaterialsList(item, width, quantity).list
     const total = cost * quantity
-    console.log('facade', facade)
+
     const resultItem = {
+      key,
       width,
       count: quantity,
       corpus,
