@@ -1,6 +1,6 @@
 import { Button, InputNumber, Select } from "antd";
 import React, {useEffect, useState} from "react";
-import {CALCULATION, DIVIDER, KEF, MATERIAL_NAMES, PRICES} from "../../constants";
+import {CALCULATION, DIVIDER, FACADE_KEF, KEF, MATERIAL_NAMES, PRICES, SIDE_KEF} from "../../constants";
 import "./style.scss";
 
 const AddBlockForm = ({ item, onAdd }) => {
@@ -9,7 +9,7 @@ const AddBlockForm = ({ item, onAdd }) => {
   const [count, setCount] = useState();
   const [facade, setFacade] = useState();
   const [corpus, setCorpus] = useState();
-  console.log('item', item)
+  const [corpusView, setCorpusView] = useState();
 
   useEffect(() => {
     resetForm()
@@ -17,9 +17,10 @@ const AddBlockForm = ({ item, onAdd }) => {
 
   const resetForm = () => {
     setCount(1);
-    setWidth(item.widths[0])
+    setWidth(item.widths[2])
     setFacade(item.facade[1].value)
     setCorpus(item.corpus[0].value)
+    setCorpusView(item.corpus[0].value)
     setBlockType(item.types[0].value);
   };
 
@@ -31,6 +32,9 @@ const AddBlockForm = ({ item, onAdd }) => {
   };
   const handleCorpus = (value) => {
     setCorpus(value);
+  };
+  const handleCorpusView = (value) => {
+    setCorpusView(value);
   };
 
   const handleFacade = (value) => {
@@ -49,7 +53,6 @@ const AddBlockForm = ({ item, onAdd }) => {
     }
 
     const list = []
-    let sum = 0;
     Object.keys(kef).forEach((name) => {
       const value = kef[name]
 
@@ -63,28 +66,57 @@ const AddBlockForm = ({ item, onAdd }) => {
         price: PRICES[name],
         subTotal,
       }
-      sum += subTotal
       list.push(newItem)
     });
 
-    return {list, cost: sum}
+    return list
   };
+
+  const generateId = () => 'id' + Math.random().toString(16).slice(2)
 
   const handleAdd = () => {
     const quantity = count ?? 1;
     const key = `${item.name}${DIVIDER}${blockType}${DIVIDER}${width}`
-    const cost = getMaterialsList(item, width, quantity).cost
-    const list = getMaterialsList(item, width, quantity).list
+    const list = getMaterialsList(item, width, quantity)
+
+    const facadeItem = {
+      name: facade,
+      label: MATERIAL_NAMES[facade],
+      kef: FACADE_KEF[key][facade],
+      price: PRICES[facade],
+      subTotal: PRICES[facade] * FACADE_KEF[key][facade],
+    }
+
+    const sideItem = {
+      name: corpus,
+      label: MATERIAL_NAMES[corpus],
+      kef: SIDE_KEF[key][corpus],
+      price: PRICES[corpus],
+      subTotal: PRICES[corpus] * SIDE_KEF[key][corpus],
+    }
+
+    let sideItemViewed
+    if (blockType === 'side') {
+      sideItemViewed = {
+        name: corpusView,
+        label: MATERIAL_NAMES[corpusView],
+        kef: SIDE_KEF[key][corpusView],
+        price: PRICES[corpusView],
+        subTotal: PRICES[corpusView] * SIDE_KEF[key][corpusView],
+      }
+    }
+    const sidesItems = sideItemViewed ? [sideItem, sideItemViewed] : [sideItem]
+
+    const items = [facadeItem, ...sidesItems, ...list]
+    const cost = items.reduce((acc, it) => acc + it.subTotal, 0)
     const total = cost * quantity
 
     const resultItem = {
+      id: generateId(),
       key,
       width,
       count: quantity,
-      corpus,
-      facade,
-      kef: KEF[key],
-      list,
+      list: items,
       cost,
       total,
       block: item,
@@ -106,6 +138,9 @@ const AddBlockForm = ({ item, onAdd }) => {
   }));
   return (
     <div key={item.name} className="add_block_form">
+      <label>
+        Тип
+      </label>
       <Select
           value={blockType}
           placeholder={"Выберете Тип"}
@@ -113,6 +148,9 @@ const AddBlockForm = ({ item, onAdd }) => {
           onChange={handleTypeChange}
           options={typeOptions}
       />
+      <label>
+        Ширина
+      </label>
       <Select
         value={width}
         placeholder={"Ширина"}
@@ -120,6 +158,9 @@ const AddBlockForm = ({ item, onAdd }) => {
         options={optionsWidth}
       />
 
+      <label>
+        Материал Фасада
+      </label>
       <Select
         value={facade}
         placeholder={"Фасад"}
@@ -127,12 +168,21 @@ const AddBlockForm = ({ item, onAdd }) => {
         options={optionsCorpus}
       />
 
+      <label>
+        Материал Корпуса
+      </label>
       <Select
           value={corpus}
           placeholder={"Корпус"}
           onChange={handleCorpus}
           options={optionsCorpus}
       />
+      {blockType === 'side' && <Select
+          value={corpusView}
+          placeholder={"Корпус"}
+          onChange={handleCorpusView}
+          options={optionsCorpus}
+      />}
 
       <InputNumber
         value={count}

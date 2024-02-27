@@ -6,21 +6,6 @@ const MATERIALS = [
   { label: "ШПОН", value: "shpon" },
 ];
 
-// export const BLOCKS = [
-//     {
-//         name: '1_door',
-//         label: '1 дверь',
-//         types: [
-//             {label: 'Центр', value: 'center'},
-//             {label: 'Край', value: 'side'}
-//         ],
-//         widths: [450, 500, 600],
-//         materials: MATERIALS,
-//         heights: [],
-//         category: 'bottom',
-//         category_name: 'Нижние Блоки'
-//     },
-// ]
 export const BLOCKS = [
   {
     name: "1_door",
@@ -201,6 +186,7 @@ export const multiply = (a, b) => {
 };
 
 export const DIVIDER = '__'
+
 export const FACADE_KEF = {
   "1_door__center__450": {
     egger: 0.09,
@@ -208,7 +194,44 @@ export const FACADE_KEF = {
     emal: 0.45,
     chpu: 0.45,
     shpon: 0.45,
-  }
+  },
+  "1_door__center__500": {
+    egger: 0.1,
+    agt: 0.12,
+    emal: 0.5,
+    chpu: 0.5,
+    shpon: 0.5,
+  },
+  "1_door__center__600": {
+    egger: 0.12,
+    agt: 0.12,
+    emal: 0.6,
+    chpu: 0.6,
+    shpon: 0.6,
+  },
+
+  "1_door__side__450": {
+    egger: 0.09,
+    agt: 0.12,
+    emal: 0.45,
+    chpu: 0.45,
+    shpon: 0.45,
+  },
+  "1_door__side__500": {
+    egger: 0.1,
+    agt: 0.12,
+    emal: 0.5,
+    chpu: 0.5,
+    shpon: 0.5,
+  },
+  "1_door__side__600": {
+    egger: 0.12,
+    agt: 0.12,
+    emal: 0.6,
+    chpu: 0.6,
+    shpon: 0.6,
+  },
+
 }
 
 export const SIDE_KEF = {
@@ -217,8 +240,43 @@ export const SIDE_KEF = {
     egger: 0.09,
     agt: 0.12,
     emal: 0.45,
-    chpu: 0.45,
     shpon: 0.45,
+  },
+  "1_door__center__500": {
+    ldsp: 0.33,
+    egger: 0.1,
+    agt: 0.12,
+    emal: 0.5,
+    shpon: 0.5,
+  },
+  "1_door__center__600": {
+    ldsp: 0.37,
+    egger: 0.12,
+    agt: 0.12,
+    emal: 0.6,
+    shpon: 0.6,
+  },
+
+  "1_door__side__450": {
+    ldsp: 0.23,
+    egger: 0.12,
+    agt: 0.2,
+    emal: 0.6,
+    shpon: 0.6,
+  },
+  "1_door__side__500": {
+    ldsp: 0.25,
+    egger: 0.12,
+    agt: 0.2,
+    emal: 0.6,
+    shpon: 0.6,
+  },
+  "1_door__side__600": {
+    ldsp: 0.28,
+    egger: 0.12,
+    agt: 0.2,
+    emal: 0.6,
+    shpon: 0.6,
   }
 }
 export const KEF = {
@@ -232,18 +290,8 @@ export const KEF = {
     nojki: 4,
   },
   "1_door__center__500": {
-    korpus_ldsp: 0.33,
-    fasad_egger: 0.1,
-    fasad_agt: 0.12,
-    fasad_emal: 0.5,
-    fasad_chpu: 0.5,
-    fasad_shpon: 0.5,
-    side_egger: 0,
-    side_agt: 0,
-    side_emal: 0,
-    side_shpon: 0,
-    hdf: 0.08,
-    kromka_fasad: 4,
+    hdf: 0.09,
+    kromka_fasad: 4.2,
     kromka_korpus: 10,
     naves_blum: 2,
     dovodchik: 2,
@@ -251,22 +299,40 @@ export const KEF = {
     nojki: 4,
   },
   "1_door__center__600": {
-    korpus_ldsp: 0.37,
-    fasad_egger: 0.12,
-    fasad_agt: 0.12,
-    fasad_emal: 0.6,
-    fasad_chpu: 0.6,
-    fasad_shpon: 0.6,
-    side_egger: 0,
-    side_agt: 0,
-    side_emal: 0,
-    side_shpon: 0,
+    hdf: 0.11,
+    kromka_fasad: 5,
+    kromka_korpus: 10,
+    naves_blum: 2,
+    dovodchik: 2,
+    konfirmat: 16,
+    nojki: 4,
+  },
+
+  "1_door__side__450": {
     hdf: 0.08,
     kromka_fasad: 4,
     kromka_korpus: 10,
     naves_blum: 2,
     dovodchik: 2,
-    konfirmat: 16,
+    styajki: 6,
+    nojki: 4,
+  },
+  "1_door__side__500": {
+    hdf: 0.09,
+    kromka_fasad: 4.2,
+    kromka_korpus: 10,
+    naves_blum: 2,
+    dovodchik: 2,
+    styajki: 6,
+    nojki: 4,
+  },
+  "1_door__side__600": {
+    hdf: 0.11,
+    kromka_fasad: 5,
+    kromka_korpus: 10,
+    naves_blum: 2,
+    dovodchik: 2,
+    styajki: 6,
     nojki: 4,
   },
 };
