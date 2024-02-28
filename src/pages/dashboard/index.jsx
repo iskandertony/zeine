@@ -33,25 +33,27 @@ const DashBoard = () => {
 
     const items = result.map(item => {
         const label = <div>
-            <Button onClick={(e) => handleRemove(e, item.id)}>X</Button>
-            <h4>{item.block.category_name} - {item.block.label}</h4>
-            <div>Ширина <b>{item.width}</b></div>
-            <div>Итого <b>{item.total}</b></div>
+            <div className="button_content mb-10">
+            <Button onClick={(e) => handleRemove(e, item.id)} danger>x</Button>
+            </div>
+            <h4 className="title">{item.block.category_name} - {item.block.label}</h4>
+            <div className="text">Ширина: <b className="title">{item.width}</b></div>
+            <div className="text">Итого: <b className="title">{item.total}</b></div>
         </div>
-        const text = <p>
+        const text = <div className="flex flex-column gap-5">
             {item.list.map(it => {
                 return (
-                    <div key={it.name}>
-                        <h5>{it.label}:</h5>
-                        <div>{it.price} x {it.kef} = {it.subTotal.toFixed(1)}</div>
+                    <div key={it.name} className="flex alignC gap-5">
+                        <h5 className="title">{it.label}:</h5>
+                        <div className="text">{it.price} x {it.kef} = {it.subTotal.toFixed(1)}</div>
                     </div>
                 )
             })}
             <hr/>
-            <div>Цена за 1ед: <b>{item.cost} c</b></div>
-            <div>Количество: <b>{item.count} шт</b></div>
-            <div>Сумма: <b>{item.total} c</b></div>
-        </p>
+            <div className="text">Цена за 1ед: <b className="title">{item.cost} c</b></div>
+            <div className="text">Количество: <b className="title">{item.count} шт</b></div>
+            <div className="text">Сумма: <b className="title">{item.total} c</b></div>
+        </div>
         return {
             key: item.id,
             label: label,
@@ -60,7 +62,7 @@ const DashBoard = () => {
     })
 
   return (
-    <div className="dash_board container_landing">
+    <div className="dash_board container_landing body_background">
       <div className="content">
           {BLOCKS.map((item, i) => {
               let cardClass = '';

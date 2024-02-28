@@ -159,7 +159,13 @@ export const BLOCKS = [
 export const MATERIAL_NAMES = {
   egger: 'ЭГГЕР',
   ldsp: 'ЛДСП',
-  hdf: 'ХДФ'
+  hdf: 'ХДФ',
+  kromka_fasad: "Кромка фасада",
+  kromka_korpus: "Кромка корпуса",
+  naves_blum: "Петли Blum",
+  dovodchik: "Доводчик",
+  konfirmat: "Конфирмат",
+  nojki: "Ножки"
 }
 
 export const PRICES = {

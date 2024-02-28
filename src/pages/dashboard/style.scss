@@ -1,6 +1,7 @@
 .dash_board {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 20px;
 
   .content {
     padding: 6px;
@@ -28,5 +29,11 @@
     background-color: #87CEEB;
   }
 
+
+  .button_content {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
 
 }
