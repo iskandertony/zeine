@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import {Button, Card, Modal, Space} from "antd";
+import {Button, Card, Modal, Space, Collapse} from "antd";
 import { BLOCKS } from "../../constants";
 import ActiveCategory from "../../components/ActiveCategory";
-import { Collapse } from "antd";
+
 import "./style.scss";
+import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 
 const DashBoard = () => {
   const [activeCategory, setActiveCategory] = useState(BLOCKS[0]);
@@ -110,6 +111,8 @@ const DashBoard = () => {
 
   return (
     <div className="dash_board container_landing body_background">
+        <PanelGroup direction="horizontal">
+            <Panel>
       <div className="war">
         <div className="content">
           {BLOCKS.map((item, i) => {
@@ -150,6 +153,9 @@ const DashBoard = () => {
           )}
         </div>
       </div>
+            </Panel>
+            <PanelResizeHandle />
+            <Panel>
       <div className="flower">
         <h2>
           Смета - <span style={{ color: "red" }}>{getTotal()} с</span>
@@ -162,6 +168,8 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
+            </Panel>
+        </PanelGroup>
     </div>
   );
 };

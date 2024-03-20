@@ -1,6 +1,6 @@
 import { Button, InputNumber, Select } from "antd";
 import React, {useEffect, useState} from "react";
-import {CALCULATION, DIVIDER, FACADE_KEF, KEF, MATERIAL_NAMES, PRICES, SIDE_KEF} from "../../constants";
+import {CALCULATION, createKey, DIVIDER, FACADE_KEF, KEF, MATERIAL_NAMES, PRICES, SIDE_KEF} from "../../constants";
 import "./style.scss";
 
 const AddBlockForm = ({ item, onAdd }) => {
@@ -10,7 +10,7 @@ const AddBlockForm = ({ item, onAdd }) => {
   const [facade, setFacade] = useState();
   const [corpus, setCorpus] = useState();
   const [corpusView, setCorpusView] = useState();
-
+  console.log("item", item)
   useEffect(() => {
     resetForm()
   }, [item])
@@ -45,7 +45,7 @@ const AddBlockForm = ({ item, onAdd }) => {
   };
 
   const getMaterialsList = (item) => {
-    const key = `${item.name}${DIVIDER}${blockType}${DIVIDER}${width}`
+    const key = createKey(item.category, item.name, blockType, width)
     const kef = KEF[key]
     if (!kef) {
       console.error('Коэффициент не найдет!')
@@ -76,7 +76,7 @@ const AddBlockForm = ({ item, onAdd }) => {
 
   const handleAdd = () => {
     const quantity = count ?? 1;
-    const key = `${item.name}${DIVIDER}${blockType}${DIVIDER}${width}`
+    const key = createKey(item.category, item.name, blockType, width)
     const list = getMaterialsList(item, width, quantity)
 
     const facadeItem = {

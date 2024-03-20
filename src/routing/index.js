@@ -1,6 +1,5 @@
 import DashBoard from "../pages/dashboard";
 
-
 export default {
     welcomePage: {
         path: "/",

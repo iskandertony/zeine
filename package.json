@@ -1,21 +1,26 @@
 {
   "name": "zeine",
   "version": "0.1.0",
+  "homepage": "https://iskandertony.github.io/zeine",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.13.3",
+    "gh-pages": "^6.1.1",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-resizable-panels": "^2.0.13",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
     "sass": "^1.70.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
