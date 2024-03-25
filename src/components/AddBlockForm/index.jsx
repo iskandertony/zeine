@@ -138,7 +138,7 @@ const AddBlockForm = ({ item, onAdd }) => {
   }));
   return (
     <div key={item.name} className="add_block_form">
-      <label>
+      <label className="title">
         Тип
       </label>
       <Select
@@ -148,7 +148,7 @@ const AddBlockForm = ({ item, onAdd }) => {
           onChange={handleTypeChange}
           options={typeOptions}
       />
-      <label>
+      <label className="title">
         Ширина
       </label>
       <Select
@@ -158,7 +158,7 @@ const AddBlockForm = ({ item, onAdd }) => {
         options={optionsWidth}
       />
 
-      <label>
+      <label className="title">
         Материал Фасада
       </label>
       <Select
@@ -168,7 +168,7 @@ const AddBlockForm = ({ item, onAdd }) => {
         options={optionsCorpus}
       />
 
-      <label>
+      <label className="title">
         Материал Корпуса
       </label>
       <Select

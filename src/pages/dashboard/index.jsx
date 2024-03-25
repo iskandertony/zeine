@@ -112,8 +112,7 @@ const DashBoard = () => {
   return (
     <div className="dash_board container_landing body_background">
         <PanelGroup direction="horizontal">
-            <Panel>
-      <div className="war">
+            <Panel style={{ marginRight: '10px' }}>
         <div className="content">
           {BLOCKS.map((item, i) => {
             let cardClass = "";
@@ -147,15 +146,17 @@ const DashBoard = () => {
             );
           })}
         </div>
+            </Panel>
+            <PanelResizeHandle />
+            <Panel>
         <div>
           {activeCategory && (
             <ActiveCategory active={activeCategory} handleAdd={handleAdd} />
           )}
         </div>
-      </div>
-            </Panel>
+        </Panel>
             <PanelResizeHandle />
-            <Panel>
+            <Panel style={{ marginLeft: '10px' }}>
       <div className="flower">
         <h2>
           Смета - <span style={{ color: "red" }}>{getTotal()} с</span>

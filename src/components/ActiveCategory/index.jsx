@@ -5,9 +5,9 @@ import "./style.scss";
 const ActiveCategory = ({ active, handleAdd }) => {
   return (
     <div className="active_category">
-      <h2>
+      <div className="name">
         {active.category_name} {active.label}
-      </h2>
+      </div>
       <AddBlockForm item={active} onAdd={handleAdd} />
     </div>
   );

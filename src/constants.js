@@ -484,8 +484,8 @@ export const SIDE_KEF = {
     ldsp: 0.62,
     egger: 0.1,
     agt: 0.2, // NO DATA
-    emal: 0.5,
-    shpon: 0.5,
+    emal: 0.6,
+    shpon: 0.6,
   },
   [KEF_KEYS.BOTTOM_TWO_BOX_SIDE_600]: {
     ldsp: 0.71,
@@ -498,22 +498,22 @@ export const SIDE_KEF = {
     ldsp: 0.8,
     egger: 0.13,
     agt: 0.2, // NO DATA
-    emal: 0.7,
-    shpon: 0.7,
+    emal: 0.6,
+    shpon: 0.6,
   },
   [KEF_KEYS.BOTTOM_TWO_BOX_SIDE_800]: {
     ldsp: 0.89,
     egger: 0.16,
     agt: 0.2, // NO DATA
-    emal: 0.8,
-    shpon: 0.8,
+    emal: 0.6,
+    shpon: 0.6,
   },
   [KEF_KEYS.BOTTOM_TWO_BOX_SIDE_900]: {
     ldsp: 0.98,
     egger: 0.18,
     agt: 0.2, // NO DATA
-    emal: 0.9,
-    shpon: 0.9,
+    emal: 0.6,
+    shpon: 0.6,
   },
   //
 
@@ -559,8 +559,8 @@ export const SIDE_KEF = {
     ldsp: 0.65,
     egger: 0.12,
     agt: 0.2,
-    emal: 0.5,
-    shpon: 0.5,
+    emal: 0.6,
+    shpon: 0.6,
   },
   [KEF_KEYS.BOTTOM_THREE_BOX_SIDE_600]: {
     ldsp: 0.74,
@@ -573,22 +573,22 @@ export const SIDE_KEF = {
     ldsp: 0.87,
     egger: 0.12,
     agt: 0.2,
-    emal: 0.7,
-    shpon: 0.7,
+    emal: 0.6,
+    shpon: 0.6,
   },
   [KEF_KEYS.BOTTOM_THREE_BOX_SIDE_800]: {
     ldsp: 0.94,
     egger: 0.12,
     agt: 0.2,
-    emal: 0.8,
-    shpon: 0.8,
+    emal: 0.6,
+    shpon: 0.6,
   },
   [KEF_KEYS.BOTTOM_THREE_BOX_SIDE_900]: {
     ldsp: 1.04,
     egger: 0.12,
     agt: 0.2,
-    emal: 0.9,
-    shpon: 0.9,
+    emal: 0.6,
+    shpon: 0.6,
   },
 };
 
